@@ -1,0 +1,83 @@
+@import "styles/theme";
+
+.page {
+  display: grid;
+  grid-template-areas:
+      "header header"
+      "subheader subheader"
+      "sidebar content"
+      "footer footer";
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+  height: 100vh;
+  width: 100vw;
+
+  &.full {
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+    grid-template-columns: 1fr;
+
+    .sidebar {
+      display: none;
+    }
+
+    .content {
+      padding: 10px;
+    }
+  }
+
+  @include mq-ld {
+    grid-template-columns: minmax(150px, 350px) 1fr;
+  }
+
+  .header {
+    grid-area: header;
+  }
+
+  .subheader {
+    grid-area: subheader;
+    padding: 10px 10px 0 10px;
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+    padding: 10px 0 10px 10px;
+  }
+
+  .content {
+    grid-area: content;
+    padding: 10px 10px 10px 0;
+
+    .inner {
+      display: grid;
+      grid-template-areas:
+          "one one"
+          "two three";
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 2fr 1fr;
+      grid-gap: 10px;
+
+      .one {
+        grid-area: one;
+      }
+
+      .two {
+        grid-area: two;
+      }
+
+      .three {
+        grid-area: three;
+      }
+    }
+
+  }
+
+  .footer {
+    grid-area: footer;
+    position: sticky;
+    bottom: 0;
+  }
+}

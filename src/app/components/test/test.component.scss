@@ -1,0 +1,88 @@
+@import "../../styles/theme";
+
+.test {
+  display: grid;
+  background-color: red;
+  grid-template-columns: repeat(1,1fr);
+  grid-gap: 5px;
+  padding: 40px 5px 5px;
+
+  &::after {
+    content: '<=250px';
+    color: white;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  @include cq-xs {
+    background-color: orangered;
+    grid-template-columns: repeat(2,1fr);
+    &::after {
+      content: '>250';
+    }
+  }
+
+  @include cq-s {
+    background-color: orange;
+    grid-template-columns: repeat(3,1fr);
+    &::after {
+      content: '>500';
+    }
+  }
+
+  @include cq-m {
+    background-color: yellow;
+    grid-template-columns: repeat(4,1fr);
+    &::after {
+      color: black;
+      content: '>750';
+    }
+  }
+
+  @include cq-l {
+    background-color: yellowgreen;
+    grid-template-columns: repeat(4,1fr);
+    &::after {
+      content: '>1000';
+    }
+  }
+
+  @include cq-xl  {
+    background-color: green;
+    grid-template-columns: repeat(4,1fr);
+    &::after {
+      content: '>1250';
+    }
+  }
+
+  @include cq-xxl  {
+    background-color: blue;
+    grid-template-columns: repeat(5,1fr);
+    &::after {
+      color: white;
+      content: '>1500';
+    }
+  }
+
+  @include cq-xxxl  {
+    background-color: purple;
+    grid-template-columns: repeat(6,1fr);
+    &::after {
+      content: '>1750';
+    }
+  }
+
+  .thing {
+    padding: 20px;
+
+    &:nth-child(even) {
+      background-color: grey;
+    }
+
+    &:nth-child(odd) {
+      background-color: lightgray;
+      color: black;
+    }
+  }
+}
